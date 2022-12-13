@@ -1,7 +1,7 @@
 {
   "name": "react-native-text-carousel",
   "version": "0.0.1",
-  "description": "text carousel for react-native",
+  "description": "Updated text carousel for react native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
     "TextCarousel",
     "ReactNative"
   ],
-  "author": "Arno Ma",
+  "author": "Paulo Reis",
   "license": "ISC"
 }
