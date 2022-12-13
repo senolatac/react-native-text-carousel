@@ -1,16 +1,16 @@
 # Setup
 
 This libray is available on npm, install it with:
-`npm install --save react-native-text-carousel`
+`npm install --save modern-text-carousel`
 or
-`yarn add react-native-text-carousel`
+`yarn add modern-text-carousel`
 
 # Usage
 
-1. Import react-native-text-carousel
+1. Import modern-text-carousel
 
 ```js 
-import TextCarousel from react-native-text-carousel
+import TextCarousel from modern-text-carousel
 ```
 
 2. Render
