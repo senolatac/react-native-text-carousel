@@ -10,7 +10,7 @@ or
 1. Import modern-text-carousel
 
 ```js 
-import TextCarousel from modern-text-carousel
+import { CarouselItem, TextCarousel } from 'modern-text-carousel';
 ```
 
 2. Render
