@@ -17,18 +17,20 @@ import TextCarousel from modern-text-carousel
 
 ```jsx
 render(){
-    return  (<View>
-    <TextCarousel>
-      <TextCarousel.Item>
-        <View><Text>1111111</Text></View>
-      </TextCarousel.Item>
-      <TextCarousel.Item>
-        <View><Text>22222222</Text></View>
-      </TextCarousel.Item>
-      <TextCarousel.Item>
-        <View><Text>33333333</Text></View>
-      </TextCarousel.Item>
-    </TextCarousel>
+    return  (
+      <View>
+        <TextCarousel height={50} interval={1000} direction='up'>
+          <CarouselItem>
+            <Text>
+              Hello
+            </Text>
+          </CarouselItem>
+          <CarouselItem>
+            <Text>
+              World
+            </Text>
+          </CarouselItem>
+      </TextCarousel>
     </View>)
 }
 ```
