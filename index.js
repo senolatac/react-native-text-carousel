@@ -1,30 +1,9 @@
-/**
- * 文字跑马灯
- * Author : Arno Ma 
- * 
- * example: 
- * 
-    <TextCarousel>
-      <TextCarousel.Item>
-        <View><Text>1111111</Text></View>
-      </TextCarousel.Item>
-      <TextCarousel.Item>
-        <View><Text>22222222</Text></View>
-      </TextCarousel.Item>
-      <TextCarousel.Item>
-        <View><Text>33333333</Text></View>
-      </TextCarousel.Item>
-    </TextCarousel>
- * 
- * 
- */
+
 import React from 'react';
 import PropTypes, { func } from 'prop-types';
 import { StyleSheet, View, Animated, Easing } from 'react-native';
 
-
-
-class TextCarousel extends React.PureComponent {
+export class TextCarousel extends React.PureComponent {
 
   constructor(props){
     super(props);
@@ -66,14 +45,16 @@ class TextCarousel extends React.PureComponent {
       Animated.timing( this.state.anim, { 
           toValue: { x: 0, y: -this.current * height },
           duration: 500,
-          easing: Easing.out(Easing.ease)
+          easing: Easing.out(Easing.ease),
+          useNativeDriver: true
       }).start(()=>{
         
         if ( this.current === cloneIndex ) {
           this.current = resetIndex
           Animated.timing(this.state.anim,{
             toValue: {x:0, y: -this.current * height},
-            duration: 0
+            duration: 0,
+            useNativeDriver: true
           }).start()
         }
 
@@ -83,7 +64,7 @@ class TextCarousel extends React.PureComponent {
   }
 
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     this.timer && clearInterval(this.timer);
   }
 
@@ -92,7 +73,7 @@ class TextCarousel extends React.PureComponent {
     var result = [];
 
     React.Children.forEach(children, (child, index)=>{
-      if (React.isValidElement(child) && child.type === Item){
+      if (React.isValidElement(child) && child.type === CarouselItem){
         result.push(
           <View key={`tc-${index}`} style={{height}}>
             {child}
@@ -101,7 +82,6 @@ class TextCarousel extends React.PureComponent {
       }
     })
 
-    // 克隆第一和最后一个元素
     if (result.length > 0){
       let firstItem = result[0]
       let lastItem = result[result.length - 1]
@@ -126,7 +106,7 @@ TextCarousel.propTypes = {
   direction: PropTypes.oneOf(['up','down'])
 }
 
-class Item extends React.PureComponent {
+export class CarouselItem extends React.PureComponent {
   render(){
     return (
       <View style={styles.itemStyle}>
@@ -135,8 +115,6 @@ class Item extends React.PureComponent {
     )
   }
 }
-
-TextCarousel.Item = Item;
 
 const styles = StyleSheet.create({
   container: {
@@ -149,5 +127,3 @@ const styles = StyleSheet.create({
   scrollView: {
   }
 })
-
-export default TextCarousel;
