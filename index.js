@@ -1,4 +1,5 @@
 
+// TODO: the objective is refactor this code to use hooks
 import React from 'react';
 import PropTypes, { func } from 'prop-types';
 import { StyleSheet, View, Animated, Easing } from 'react-native';

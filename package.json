@@ -1,7 +1,7 @@
 {
-  "name": "react-native-text-carousel",
+  "name": "modern-text-carousel",
   "version": "0.0.1",
-  "description": "Updated text carousel for react native",
+  "description": "Modern text carousel for React Native",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +11,9 @@
     "ReactNative"
   ],
   "author": "Paulo Reis",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/preis-lab/react-native-text-carousel.git"
+  }
 }
