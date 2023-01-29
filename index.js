@@ -34,34 +34,40 @@ export class TextCarousel extends React.PureComponent {
   componentDidMount(){
     let {interval, height, direction} = this.props;
     let isUp = direction === 'up';
-
-    let cloneIndex = isUp ? this.total - 1 : 0;
-    let resetIndex = isUp ? 1 : this.total - 2;
     let directionValue = isUp ? 1 : -1;
 
     this.timer = setInterval(()=>{
 
       this.current += directionValue
       
-      Animated.timing( this.state.anim, { 
-          toValue: { x: 0, y: -this.current * height },
-          duration: 500,
-          easing: Easing.out(Easing.ease),
-          useNativeDriver: true
-      }).start(()=>{
-        
-        if ( this.current === cloneIndex ) {
-          this.current = resetIndex
-          Animated.timing(this.state.anim,{
-            toValue: {x:0, y: -this.current * height},
-            duration: 0,
-            useNativeDriver: true
-          }).start()
-        }
-
-      });
+      this.startAnimation();
 
     }, interval);
+  }
+
+  startAnimation() {
+      Animated.timing(this.state.anim, {
+          toValue: {x: 0, y: -this.current * this.props.height},
+          duration: 1000,
+          easing: Easing.out(Easing.ease),
+          useNativeDriver: true,
+      }).start(() => this.loopAnimation());
+  }
+
+  loopAnimation() {
+      let {height, direction} = this.props;
+      let isUp = direction === 'up';
+
+      let cloneIndex = isUp ? this.total - 1 : 0;
+      let resetIndex = isUp ? 1 : this.total - 2;
+      if (this.current === cloneIndex) {
+          this.current = resetIndex;
+          Animated.timing(this.state.anim, {
+              toValue: {x: 0, y: -this.current * height},
+              duration: 0,
+              useNativeDriver: true,
+          }).start(() => this.startAnimation());
+      }
   }
 
 
